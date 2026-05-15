@@ -219,7 +219,7 @@ svg { display: block; }
   transition: var(--transition);
 }
 .nav-links a:hover {
-  color: var(--navy);
+   color: var(--gold); 
   background: var(--gray-light);
 }
 
@@ -580,13 +580,29 @@ svg { display: block; }
 }
 
 /* ============================================
+   WHY CHOOSE US - CARD BACKGROUND COLORS
+   ============================================ */
+
+/* Matches the light orange/peach theme of cards 1 and 4 */
+.why-grid .why-card:nth-child(1),
+.why-grid .why-card:nth-child(4) {
+  background-color: #fff3e0;
+}
+
+/* Matches the light blue theme of cards 2 and 5 */
+.why-grid .why-card:nth-child(2),
+.why-grid .why-card:nth-child(5) {
+  background-color: #e8f0fa;
+}
+
+/* Matches the light green theme of card 3 */
+.why-grid .why-card:nth-child(3) {
+  background-color: #e8f6f0;
+}
+
+/* ============================================
    PROCESS SECTION
    ============================================ */
-.process {
-  padding: 88px 0;
-  background: radial-gradient(circle at top, #1e4e9a 0%, #1a3a6b 50%, #0f2448 100%);
-  position: relative;
-}
 
 .process-track {
   display: flex;
@@ -600,43 +616,57 @@ svg { display: block; }
 
 .process-step {
   flex: 1;
-  min-width: 160px;
+  min-width: 190px; /* Increased to prevent squishing on smaller screens */
   display: flex;
+}
+
+/* Pulls the boxes left so the arrow point nests inside the next arrow's tail */
+.process-step:not(:first-child) {
+  margin-left: -18px; 
 }
 
 .step-arrow {
   position: relative;
   background: var(--gold);
-  padding: 18px 24px 18px 32px;
+  /* Significantly increased padding for a much taller, wider box */
+  padding: 28px 30px 28px 48px; 
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex: 1;
-  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
+  /* Deepened the arrow cut from 18px to 24px for a sharper, larger look */
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%, 24px 50%);
   transition: var(--transition);
   cursor: default;
 }
+
 .process-step:first-child .step-arrow {
-  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%);
-  padding-left: 20px;
-}
-.last-arrow {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 18px 50%) !important;
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%);
+  padding-left: 30px; /* Adjusted so text is centered properly without the tail */
 }
 
-.step-arrow:hover { background: var(--gold-dark); transform: scaleY(1.04); }
+.last-arrow {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 24px 50%) !important;
+  padding-right: 30px; /* Adjusted so text is centered properly without the point */
+}
+
+.step-arrow:hover { 
+  background: var(--gold-dark); 
+  transform: scaleY(1.04); 
+}
 
 .step-num {
-  font-size: 1.3rem;
+  font-size: 1.6rem; /* Increased size to match the larger box */
   font-weight: 800;
   color: var(--dark-text);
   line-height: 1;
   flex-shrink: 0;
 }
+
 .step-label {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.95rem; /* Increased text size for readability */
+  font-weight: 700; /* Made slightly bolder to match the image */
   color: var(--dark-text);
   line-height: 1.3;
 }
@@ -723,7 +753,7 @@ svg { display: block; }
 .cta-banner {
   position: relative;
   padding: 80px 0;
-   background: radial-gradient(circle at top, #1e4e9a 0%, #1a3a6b 50%, #0f2448 100%);
+  background: radial-gradient(circle at top, rgba(59, 29, 0, 0.85) 45%, rgba(27, 12, 0, 0.95) 100%);
   overflow: hidden;
   text-align: center;
 }
@@ -788,8 +818,12 @@ svg { display: block; }
    ============================================ */
 .footer {
   position: relative;
-  /* Added background image with the original gradient converted to a dark overlay */
-  background: radial-gradient(circle at top, rgba(59, 29, 0, 0.85) 45%, rgba(27, 12, 0, 0.95) 100%), url('assest/images/modern-buildings-boats-san-diego-usa.jpg') center center / cover no-repeat;
+  background: radial-gradient(circle at top, #1e4e9a 0%, #1a3a6b 50%, #0f2448 100%), 
+              url('assest/images/modern-buildings-boats-san-diego-usa.jpg') center center / cover no-repeat;
+  
+  /* Blends the solid gradient and the image together */
+  background-blend-mode: multiply; 
+  
   overflow: hidden;
   color: rgba(255,255,255,0.75);
 }
