@@ -219,11 +219,17 @@ svg { display: block; }
   transition: var(--transition);
 }
 .nav-links a:hover {
-   color: var(--gold); 
-  background: var(--gray-light);
+   color: darkorange; /* Changed to dark orange */
+   /* Removed the grey background */
 }
 
-.nav-cta { margin-left: 12px; flex-shrink: 0; }
+/* Made the button slightly smaller by reducing padding and font-size */
+.nav-cta { 
+  margin-left: 12px; 
+  flex-shrink: 0; 
+  padding: 5px 5px; 
+  font-size: 15px; 
+}
 
 /* Hamburger */
 .hamburger {
@@ -554,11 +560,13 @@ svg { display: block; }
   transition: var(--transition);
   cursor: default;
 }
+
 .why-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--navy);
 }
+
 .why-icon {
   width: 58px;
   height: 58px;
@@ -566,13 +574,16 @@ svg { display: block; }
   align-items: center;
   justify-content: center;
 }
+
 .why-icon svg { width: 100%; height: 100%; }
+
 .why-card h4 {
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--navy);
   line-height: 1.3;
 }
+
 .why-card p {
   font-size: 0.76rem;
   color: var(--gray-text);
@@ -616,7 +627,7 @@ svg { display: block; }
 
 .process-step {
   flex: 1;
-  min-width: 190px; /* Increased to prevent squishing on smaller screens */
+  min-width: 190px;
   display: flex;
 }
 
@@ -628,14 +639,14 @@ svg { display: block; }
 .step-arrow {
   position: relative;
   background: var(--gold);
-  /* Significantly increased padding for a much taller, wider box */
-  padding: 28px 30px 28px 48px; 
+  /* Reduced padding for a tighter button height/width */
+  padding: 16px 20px 16px 36px; 
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
+  /* Reduced gap to bring the number and text closer together */
+  gap: 6px; 
   flex: 1;
-  /* Deepened the arrow cut from 18px to 24px for a sharper, larger look */
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%, 24px 50%);
   transition: var(--transition);
   cursor: default;
@@ -643,12 +654,14 @@ svg { display: block; }
 
 .process-step:first-child .step-arrow {
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%);
-  padding-left: 30px; /* Adjusted so text is centered properly without the tail */
+  /* Matched padding to align properly with the new smaller padding above */
+  padding-left: 20px; 
 }
 
 .last-arrow {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 24px 50%) !important;
-  padding-right: 30px; /* Adjusted so text is centered properly without the point */
+  /* Matched padding to align properly with the new smaller padding above */
+  padding-right: 20px; 
 }
 
 .step-arrow:hover { 
@@ -657,7 +670,7 @@ svg { display: block; }
 }
 
 .step-num {
-  font-size: 1.6rem; /* Increased size to match the larger box */
+  font-size: 1.6rem; 
   font-weight: 800;
   color: var(--dark-text);
   line-height: 1;
@@ -665,8 +678,8 @@ svg { display: block; }
 }
 
 .step-label {
-  font-size: 0.95rem; /* Increased text size for readability */
-  font-weight: 700; /* Made slightly bolder to match the image */
+  font-size: 0.95rem; 
+  font-weight: 700; 
   color: var(--dark-text);
   line-height: 1.3;
 }
@@ -753,17 +766,19 @@ svg { display: block; }
 .cta-banner {
   position: relative;
   padding: 80px 0;
-  /* A richer, warmer dark bronze */
-  background: radial-gradient(circle at top, #422a14 0%, #170d04 100%);
+  /* Changed to white background */
+  background: #ffffff; 
   overflow: hidden;
   text-align: center;
-  color: #ffffff;
+  /* Changed default text color to black */
+  color: #000000; 
 }
 
 .cta-overlay {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  /* Changed SVG pattern fill to black (%23000000) so it shows up on the white background */
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
 }
 
@@ -771,7 +786,8 @@ svg { display: block; }
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.15;
+  /* Lowered opacity slightly so the glows aren't too overwhelming on white */
+  opacity: 0.1; 
   pointer-events: none;
 }
 .cta-deco-1 {
@@ -798,13 +814,15 @@ svg { display: block; }
 .cta-heading {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--white);
+  /* Changed heading color to black */
+  color: #000000; 
   margin-bottom: 6px;
   line-height: 1.25;
 }
 .cta-sub {
   font-size: 1rem;
-  color: rgba(255,255,255,0.7);
+  /* Changed subtext to dark gray for contrast */
+  color: rgba(0, 0, 0, 0.7); 
   font-style: italic;
   margin-bottom: 36px;
 }
@@ -815,16 +833,26 @@ svg { display: block; }
   gap: 16px;
 }
 
+/* Added this specifically to make the "btn-outline-light" class visible on a white background */
+.cta-banner .btn-outline-light {
+  color: #000000;
+  border: 2px solid #000000;
+  background: transparent;
+}
+.cta-banner .btn-outline-light:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
 /* ============================================
    FOOTER
    ============================================ */
 .footer {
   position: relative;
-  background: radial-gradient(circle at top, #1e4e9a 0%, #1a3a6b 50%, #0f2448 100%), 
-              url('assest/images/modern-buildings-boats-san-diego-usa.jpg') center center / cover no-repeat;
   
-  /* Blends the solid gradient and the image together */
-  background-blend-mode: multiply; 
+  /* Removed blue gradient. Added a dark semi-transparent overlay to ensure white text is readable over the image */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), 
+              url('assest/images/modern-buildings-boats-san-diego-usa.jpg') center center / cover no-repeat;
   
   overflow: hidden;
   color: rgba(255,255,255,0.75);
@@ -1003,7 +1031,6 @@ svg { display: block; }
   font-size: 0.8rem;
   color: rgba(255,255,255,0.75);
 }
-
 /* ============================================
    SCROLL TO TOP
    ============================================ */
