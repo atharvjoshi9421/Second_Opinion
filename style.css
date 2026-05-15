@@ -839,11 +839,11 @@ svg { display: block; }
 .footer-logo-tag {
   display: block;
   font-size: 0.62rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.75);
 }
 .footer-about {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
   line-height: 1.75;
   margin-bottom: 24px;
 }
@@ -861,7 +861,7 @@ svg { display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.75);
   transition: var(--transition);
 }
 .social-link svg { width: 16px; height: 16px; }
@@ -901,7 +901,7 @@ svg { display: block; }
 }
 .footer-links li a {
   font-size: 0.845rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
@@ -926,10 +926,10 @@ svg { display: block; }
   align-items: flex-start;
   gap: 12px;
   font-size: 0.845rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
 }
 .footer-contact-list li a {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
   transition: var(--transition);
 }
 .footer-contact-list li a:hover { color: var(--gold); }
@@ -958,14 +958,14 @@ svg { display: block; }
 }
 .footer-copy {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.75);
 }
 .footer-location {
   display: flex;
   align-items: center;
   gap: 5px;
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.75);
 }
 
 /* ============================================
