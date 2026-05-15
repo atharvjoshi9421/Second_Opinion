@@ -753,9 +753,11 @@ svg { display: block; }
 .cta-banner {
   position: relative;
   padding: 80px 0;
-  background: radial-gradient(circle at top, rgba(59, 29, 0, 0.85) 45%, rgba(27, 12, 0, 0.95) 100%);
+  /* A richer, warmer dark bronze */
+  background: radial-gradient(circle at top, #422a14 0%, #170d04 100%);
   overflow: hidden;
   text-align: center;
+  color: #ffffff;
 }
 
 .cta-overlay {
