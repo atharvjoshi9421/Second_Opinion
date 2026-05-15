@@ -377,7 +377,7 @@ svg { display: block; }
    ABOUT SECTION
    ============================================ */
 .about {
-  padding: 96px 0 80px;
+  padding: 45px 0 80px;
   background: var(--white);
 }
 
@@ -464,7 +464,7 @@ svg { display: block; }
    ============================================ */
 .services {
   position: relative;
-  padding: 88px 0;
+  padding: 30px 0;
   background: radial-gradient(circle at top, #1e4e9a 0%, #1a3a6b 45%, #0f2448 100%);
   overflow: hidden;
 }
@@ -536,7 +536,7 @@ svg { display: block; }
    WHY CHOOSE US
    ============================================ */
 .why-us {
-  padding: 88px 0;
+  padding: 30px 0;
   background: var(--off-white);
 }
 
@@ -640,7 +640,7 @@ svg { display: block; }
   position: relative;
   background: var(--gold);
   /* Reduced padding for a tighter button height/width */
-  padding: 16px 20px 16px 36px; 
+  padding: 12px 28px 12px 28px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -688,7 +688,7 @@ svg { display: block; }
    BENEFITS + TESTIMONIAL
    ============================================ */
 .benefits {
-  padding: 88px 0;
+  padding: 40px 0;
   background: var(--white);
 }
 
@@ -765,7 +765,7 @@ svg { display: block; }
    ============================================ */
 .cta-banner {
   position: relative;
-  padding: 80px 0;
+  padding: 40px 0;
   /* Changed to white background */
   background: #ffffff; 
   overflow: hidden;
