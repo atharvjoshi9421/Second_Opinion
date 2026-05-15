@@ -638,13 +638,10 @@ svg { display: block; }
 
 .step-arrow {
   position: relative;
-  background: var(--gold);
-  /* Reduced padding for a tighter button height/width */
   padding: 12px 28px 12px 28px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* Reduced gap to bring the number and text closer together */
   gap: 6px; 
   flex: 1;
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%, 24px 50%);
@@ -652,27 +649,50 @@ svg { display: block; }
   cursor: default;
 }
 
+/* Orange for Step 1 and Step 5 */
+.process-step:nth-child(1) .step-arrow,
+.process-step:nth-child(5) .step-arrow {
+  background: #f58a00; 
+}
+
+/* Blue for Steps 2, 3, and 4 */
+.process-step:nth-child(2) .step-arrow,
+.process-step:nth-child(3) .step-arrow,
+.process-step:nth-child(4) .step-arrow {
+  background: #1a569d; 
+}
+
 .process-step:first-child .step-arrow {
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 50%, calc(100% - 24px) 100%, 0 100%);
-  /* Matched padding to align properly with the new smaller padding above */
   padding-left: 20px; 
 }
 
 .last-arrow {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 24px 50%) !important;
-  /* Matched padding to align properly with the new smaller padding above */
   padding-right: 20px; 
 }
 
 .step-arrow:hover { 
-  background: var(--gold-dark); 
   transform: scaleY(1.04); 
+}
+
+/* Darker hover states for the different colors */
+.process-step:nth-child(1) .step-arrow:hover,
+.process-step:nth-child(5) .step-arrow:hover {
+  background: #df7d00;
+}
+
+.process-step:nth-child(2) .step-arrow:hover,
+.process-step:nth-child(3) .step-arrow:hover,
+.process-step:nth-child(4) .step-arrow:hover {
+  background: #14437a;
 }
 
 .step-num {
   font-size: 1.6rem; 
   font-weight: 800;
-  color: var(--dark-text);
+  /* Changed to white */
+  color: #ffffff; 
   line-height: 1;
   flex-shrink: 0;
 }
@@ -680,7 +700,8 @@ svg { display: block; }
 .step-label {
   font-size: 0.95rem; 
   font-weight: 700; 
-  color: var(--dark-text);
+  /* Changed to white */
+  color: #ffffff; 
   line-height: 1.3;
 }
 
