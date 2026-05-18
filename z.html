@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Second Opinion – Complete Post-Sales CRM Solutions for Builders & Developers. 10+ Years of Experience in Agreement, Disbursement, Possession & Society Formation." />
+  <title>Second Opinion | One Roof for Property Solutions</title>
+  <link rel="icon" type="image/png" href="assest/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+/* =============================================
+   CSS Variables & Reset
+   ============================================= */
+:root {
+  --ink:        #0d1b2a;
+  --ink-light:  #1e3a5f;
+  --gold:       #c9922a;
+  --gold-2:     #e8a93d;
+  --gold-pale:  #fdf3e3;
+  --cream:      #f9f6f1;
+  --white:      #ffffff;
+  --muted:      #6b7a8d;
+  --border:     rgba(201,146,42,0.18);
+  --glass:      rgba(255,255,255,0.07);
+  --shadow-sm:  0 2px 16px rgba(13,27,42,0.07);
+  --shadow-md:  0 8px 40px rgba(13,27,42,0.12);
+  --shadow-lg:  0 20px 70px rgba(13,27,42,0.18);
+  --radius:     16px;
+  --radius-sm:  10px;
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --font-head:  'Playfair Display', Georgia, serif;
+  --font-body:  'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.tag-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.tag-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+/* Fade-in */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.22s; }
+.reveal.d3 { transition-delay: 0.34s; }
+.reveal.d4 { transition-delay: 0.46s; }
+.reveal.d5 { transition-delay: 0.58s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.28s var(--ease);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn:hover::after { opacity: 1; }
+.btn:hover { transform: translateY(-2px); }
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: var(--white);
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(201,146,42,0.35);
+}
+.btn-gold:hover { box-shadow: 0 8px 30px rgba(201,146,42,0.5); }
+
+.btn-outline-white {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--white);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-outline-dark:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(13,27,42,0.06);
+  transition: box-shadow 0.3s var(--ease), background 0.3s;
+}
+#navbar.scrolled {
+  box-shadow: 0 4px 28px rgba(13,27,42,0.10);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  height: 72px;
+  gap: 32px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.logo-icon {
+  display: flex;
+  align-items: center;
+}
+.logo-icon img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+.nav-links a {
+  padding: 6px 15px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink);
+  border-radius: 6px;
+  transition: all 0.22s var(--ease);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - 30px);
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: transform 0.22s var(--ease);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: translateX(-50%) scaleX(1); }
+
+.nav-cta {
+  margin-left: 16px;
+  flex-shrink: 0;
+  padding: 10px 22px;
+  font-size: 0.85rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.3s var(--ease);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+#hero {
+  position: relative;
+  min-height: 100svh;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 0 80px;
+}
+
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  background: url('assest/images/hero section image.jpeg') center center / cover no-repeat;
+  opacity: 0.22;
+  transform: scale(1.04);
+  animation: slowZoom 16s ease-in-out infinite alternate;
+}
+@keyframes slowZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1.00); }
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,146,42,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,146,42,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,146,42,0.18) 0%, transparent 70%);
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 8px;
+  background: rgba(201,146,42,0.12);
+  border: 1px solid rgba(201,146,42,0.25);
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--gold-2);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,169,61,0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(232,169,61,0); }
+}
+.hero-eyebrow span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+
+.hero-heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.13;
+  color: var(--white);
+  margin-bottom: 22px;
+  letter-spacing: -0.5px;
+}
+.hero-highlight {
+  color: var(--gold-2);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.62);
+  margin-bottom: 40px;
+  max-width: 480px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 52px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gold-2);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.77rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Hero Image Panel */
+.hero-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.hero-img-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.hero-img-frame {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(201,146,42,0.25);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.hero-city-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -28px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 12px 40px rgba(201,146,42,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.badge-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+.badge-text {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.hero-deco-ring {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 90px;
+  height: 90px;
+  border: 2px solid rgba(201,146,42,0.3);
+  border-radius: 50%;
+}
+.hero-deco-ring::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(201,146,42,0.15);
+  border-radius: 50%;
+}
+
+/* =============================================
+   ABOUT SECTION
+   ============================================= */
+.about {
+  padding: 100px 0;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.about::before {
+  content: 'WHO';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: var(--font-head);
+  font-size: 10rem;
+  font-weight: 900;
+  color: rgba(13,27,42,0.03);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.2em;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-desc {
+  font-size: 0.97rem;
+  color: var(--muted);
+  margin-bottom: 36px;
+  line-height: 1.85;
+}
+.about-desc strong { color: var(--ink); font-weight: 600; }
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.93rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+.about-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--white);
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.about-image {
+  position: relative;
+}
+.about-img-frame {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.about-img-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(13,27,42,0.4) 100%);
+}
+.team-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-experience-badge {
+  position: absolute;
+  bottom: 28px;
+  right: -28px;
+  background: var(--ink);
+  border: 1px solid rgba(201,146,42,0.25);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-experience-badge span {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gold-2);
+  line-height: 1;
+}
+.about-experience-badge small {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-align: center;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.about-float-tag {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 8px 30px rgba(201,146,42,0.35);
+  z-index: 2;
+}
+.about-float-tag p {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+/* =============================================
+   SERVICES SECTION
+   ============================================= */
+.services {
+  padding: 100px 0;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.services-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(201,146,42,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 90%, rgba(30,58,95,0.5) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.services-heading-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+}
+.services-heading-row .section-title { margin-bottom: 0; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 32px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: default;
+  transition: all 0.32s var(--ease);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.service-card:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(201,146,42,0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-num {
+  font-family: var(--font-head);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(201,146,42,0.2);
+  line-height: 1;
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  transition: color 0.3s;
+}
+.service-card:hover .service-num { color: rgba(201,146,42,0.4); }
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(201,146,42,0.12);
+  border: 1px solid rgba(201,146,42,0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+}
+.service-card:hover .service-icon {
+  background: rgba(201,146,42,0.2);
+  border-color: rgba(201,146,42,0.4);
+}
+.service-icon svg { width: 26px; height: 26px; }
+
+.service-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+.service-card p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+}
+
+/* =============================================
+   WHY CHOOSE US
+   ============================================= */
+.why-us {
+  padding: 100px 0;
+  background: var(--white);
+  position: relative;
+}
+
+.why-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.why-desc {
+  font-size: 0.97rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  border-radius: var(--radius);
+  padding: 32px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid var(--border);
+  cursor: default;
+  transition: all 0.32s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.why-card:nth-child(1) { background: #fdf7ef; }
+.why-card:nth-child(2) { background: #eff4fb; }
+.why-card:nth-child(3) { background: #eff7f3; }
+.why-card:nth-child(4) { background: #fdf7ef; }
+.why-card:nth-child(5) { background: #eff4fb; }
+
+.why-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.why-card:hover {
+  border-color: rgba(201,146,42,0.35);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+}
+.why-card:hover::after { transform: scaleX(1); }
+
+.why-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+.why-icon svg { width: 28px; height: 28px; }
+
+.why-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.why-card p {
+  font-size: 0.76rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =============================================
+   SECTION TITLE SHARED
+   ============================================= */
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.section-title.light { color: var(--white); }
+
+/* =============================================
+   PROCESS SECTION
+   ============================================= */
+.process {
+  padding: 100px 0;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.process-header { text-align: center; margin-bottom: 60px; }
+
+.process-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.process-track::-webkit-scrollbar { display: none; }
+
+.process-step {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  position: relative;
+}
+.process-step:not(:first-child) { margin-left: -20px; }
+
+.step-arrow {
+  position: relative;
+  padding: 18px 36px 18px 36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%, 26px 50%);
+  transition: all 0.28s var(--ease);
+  cursor: default;
+}
+.process-step:first-child .step-arrow {
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%);
+  padding-left: 28px;
+}
+.process-step:last-child .step-arrow {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 26px 50%);
+  padding-right: 28px;
+}
+
+.process-step:nth-child(odd) .step-arrow { background: var(--ink); }
+.process-step:nth-child(even) .step-arrow { background: var(--ink-light); }
+.process-step:first-child .step-arrow { background: linear-gradient(135deg, var(--gold-2), var(--gold)); }
+.process-step:last-child .step-arrow { background: linear-gradient(135deg, var(--gold-2), var(--gold)); }
+
+.step-arrow:hover { filter: brightness(1.15); }
+
+.step-num {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.3);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.step-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.35;
+}
+
+/* =============================================
+   BENEFITS SECTION
+   ============================================= */
+.benefits {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.benefits-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.benefits-left .section-title { margin-bottom: 36px; }
+
+.benefits-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 16px 20px;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all 0.25s var(--ease);
+}
+.benefits-list li:hover {
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(6px);
+}
+
+.check-icon {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+#testimonials .testimonial-box {
+  background: var(--ink);
+  border-radius: 24px;
+  padding: 48px 44px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+#testimonials .testimonial-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-2), var(--gold));
+}
+#testimonials .testimonial-box::after {
+  content: '"';
+  position: absolute;
+  bottom: -30px;
+  right: 24px;
+  font-family: var(--font-head);
+  font-size: 14rem;
+  font-weight: 900;
+  color: rgba(201,146,42,0.08);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+.testimonial-stars span {
+  font-size: 1.1rem;
+  color: var(--gold-2);
+}
+
+.testimonial-text {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  color: var(--white);
+  font-style: italic;
+  line-height: 1.75;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  font-weight: 700;
+  color: var(--gold-2);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-mark { display: none; }
+
+/* =============================================
+   CTA SECTION
+   ============================================= */
+.cta-banner {
+  padding: 100px 0;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201,146,42,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 0% 50%, rgba(30,58,95,0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-deco, .cta-deco-1, .cta-deco-2 { display: none; }
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-line {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-2), var(--gold));
+  border-radius: 2px;
+  margin: 0 auto 28px;
+}
+
+.cta-heading {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.cta-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+  margin-bottom: 44px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-line-h { display: none; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  position: relative;
+  background: #060e18;
+  color: rgba(255,255,255,0.65);
+  overflow: hidden;
+}
+
+.footer-glow, .footer-glow-1, .footer-glow-2 { display: none; }
+
+.footer-top {
+  padding: 80px 0 56px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.4fr;
+  gap: 52px;
+}
+
+.footer-logo img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+.footer-about {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.footer-social { display: flex; gap: 10px; }
+.social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.25s var(--ease);
+}
+.social-link svg { width: 16px; height: 16px; }
+.social-link:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.footer-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 22px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--gold-2);
+  border-radius: 2px;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links li a {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.22s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-links li a::before {
+  content: '→';
+  color: var(--gold-2);
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.22s var(--ease);
+}
+.footer-links li a:hover {
+  color: var(--gold-2);
+  padding-left: 6px;
+}
+.footer-links li a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-contact-list { display: flex; flex-direction: column; gap: 16px; }
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.5);
+}
+.footer-contact-list li a {
+  color: rgba(255,255,255,0.5);
+  transition: color 0.22s;
+}
+.footer-contact-list li a:hover { color: var(--gold-2); }
+.contact-icon {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--gold-2);
+}
+.contact-icon svg { width: 100%; height: 100%; }
+
+.footer-bottom {
+  padding: 20px 0;
+  position: relative;
+  z-index: 1;
+}
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-copy, .footer-location {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+}
+.footer-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* =============================================
+   SCROLL TO TOP
+   ============================================= */
+.scroll-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(201,146,42,0.45);
+  transition: all 0.28s var(--ease);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 900;
+}
+.scroll-top.visible { opacity: 1; pointer-events: all; }
+.scroll-top:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(201,146,42,0.55); }
+
+/* =============================================
+   RESPONSIVE — TABLET ≤ 1024px
+   ============================================= */
+@media (max-width: 1024px) {
+  .services-grid,
+  .why-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .why-header { grid-template-columns: 1fr; gap: 24px; }
+  .hero-container { gap: 40px; }
+  .about-experience-badge { right: 16px; }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE ≤ 768px
+   ============================================= */
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+
+  /* Navbar */
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 4px;
+    box-shadow: 0 8px 30px rgba(13,27,42,0.12);
+    display: none;
+    border-bottom: 1px solid rgba(13,27,42,0.06);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { width: 100%; padding: 10px 12px; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  /* Hero */
+  #hero { padding: 70px 0 80px; min-height: auto; }
+  .hero-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-sub { margin: 0 auto 36px; }
+  .hero-buttons { justify-content: center; }
+  .hero-image { order: -1; }
+  .hero-img-wrap { max-width: 340px; margin: 0 auto; }
+  .hero-city-img { height: 280px; }
+  .hero-badge { left: 8px; bottom: -14px; }
+  .hero-stats { justify-content: center; gap: 24px; }
+
+  /* About */
+  .about { padding: 70px 0; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about::before { display: none; }
+  .about-experience-badge { right: 12px; bottom: 16px; }
+  .about-float-tag { top: -14px; left: -12px; }
+
+  /* Services */
+  .services { padding: 70px 0; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-heading-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* Why */
+  .why-us { padding: 70px 0; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-header { grid-template-columns: 1fr; }
+
+  /* Process */
+  .process { padding: 70px 0; }
+  .process-track {
+    flex-direction: column;
+    gap: 8px;
+    overflow-x: visible;
+  }
+  .process-step { flex: none; }
+  .process-step:not(:first-child) { margin-left: 0; }
+  .step-arrow {
+    clip-path: none !important;
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+
+  /* Benefits */
+  .benefits { padding: 70px 0; }
+  .benefits-inner { grid-template-columns: 1fr; gap: 48px; }
+
+  /* CTA */
+  .cta-banner { padding: 70px 0; }
+
+  /* Footer */
+  .footer-top { padding: 56px 0 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-brand { grid-column: auto; }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+}
+
+/* =============================================
+   RESPONSIVE — SMALL ≤ 480px
+   ============================================= */
+@media (max-width: 480px) {
+  .hero-heading { font-size: 1.8rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .cta-buttons .btn { width: 100%; max-width: 300px; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ==============================
+     NAVBAR
+     ============================== -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <a href="index.html"><img src="assest/images/logo.png" alt="logo" style="height:40px;width:auto;object-fit:contain;"></a>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="about.html">About Us</a>
+      <a href="">Services</a>
+      <a href="#process">Process</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#testimonials">Testimonials</a>
+    </nav>
+
+    <a href="contact.html" class="btn btn-gold nav-cta">Book Free Consultation</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ==============================
+     HERO SECTION
+     ============================== -->
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-container">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span>Pune's Leading Real Estate CRM</span>
+      </div>
+      <h1 class="hero-heading">
+        Complete Post-Sales CRM Solutions<br />
+        <span class="hero-highlight">for Builders &amp; Developers</span>
+      </h1>
+      <p class="hero-sub">10+ Years of Experience in Agreement, Disbursement, Possession &amp; Society Formation</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-gold btn-lg">Book Free Consultation</a>
+        <a href="#services" class="btn btn-outline-white btn-lg">Talk to CRM Expert</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num badge-num">10+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">200+</div>
+          <div class="hero-stat-label">Builders Served</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5K+</div>
+          <div class="hero-stat-label">Units Managed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image reveal d2">
+      <div class="hero-img-wrap">
+        <div class="hero-img-frame">
+          <img src="assest/images/hero section image.jpeg" alt="Modern Construction Site" class="hero-city-img">
+        </div>
+        <div class="hero-badge">
+          <span class="badge-num">10+</span>
+          <span class="badge-text">Years<br/>Experience</span>
+        </div>
+        <div class="hero-deco-ring"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     ABOUT SECTION
+     ============================== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="tag-label">Who We Are</span>
+        <h2 class="section-title">Pune's Most Trusted<br/>Post-Sales CRM Partner</h2>
+        <p class="about-desc">Second Opinion is a leading Real Estate CRM company with <strong>10+ years of experience</strong>. We manage your entire post-sales journey from Agreement to Society Formation.</p>
+        <ul class="about-list">
+          <li>
+            <span class="about-icon">✔</span>
+            Trusted by 200+ Builders across Pune
+          </li>
+          <li>
+            <span class="about-icon">✔</span>
+            End-to-end documentation &amp; compliance
+          </li>
+          <li>
+            <span class="about-icon">✔</span>
+            Dedicated relationship managers
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-image reveal d2">
+        <div class="about-float-tag">
+          <p>Trusted Since 2014</p>
+          <p>Maharashtra's #1 CRM</p>
+        </div>
+        <div class="about-img-frame">
+          <img src="assest/images/who we are image.jpg" alt="Second Opinion Professional Team" class="team-img">
+        </div>
+        <div class="about-experience-badge">
+          <span>10+</span>
+          <small>Years Expertise</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     SERVICES SECTION
+     ============================== -->
+<section class="services" id="services">
+  <div class="services-bg"></div>
+  <div class="container">
+    <div class="services-heading-row reveal">
+      <div>
+        <span class="tag-label" style="color:var(--gold-2);">What We Offer</span>
+        <h2 class="section-title light">Our Services</h2>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal d1">
+        <span class="service-num">01</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="4" width="28" height="36" rx="3" fill="rgba(201,146,42,0.12)" stroke="#e8a93d" stroke-width="2"/>
+            <line x1="14" y1="14" x2="30" y2="14" stroke="#e8a93d" stroke-width="2"/>
+            <line x1="14" y1="20" x2="30" y2="20" stroke="#e8a93d" stroke-width="2"/>
+            <line x1="14" y1="26" x2="24" y2="26" stroke="#e8a93d" stroke-width="2"/>
+            <path d="M30 35 L34 39 L41 31" stroke="#e8a93d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Agreement Management</h3>
+        <p>Seamless documentation, drafting, and execution of sale agreements with full legal compliance.</p>
+      </div>
+
+      <div class="service-card reveal d2">
+        <span class="service-num">02</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="18" fill="rgba(201,146,42,0.12)" stroke="#e8a93d" stroke-width="2"/>
+            <text x="24" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#e8a93d">₹</text>
+          </svg>
+        </div>
+        <h3>Disbursement Handling</h3>
+        <p>Timely bank loan disbursements with structured tracking and builder-bank coordination.</p>
+      </div>
+
+      <div class="service-card reveal d3">
+        <span class="service-num">03</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="18" r="10" fill="rgba(201,146,42,0.12)" stroke="#e8a93d" stroke-width="2"/>
+            <path d="M8 42 Q8 30 24 30 Q40 30 40 42" fill="rgba(201,146,42,0.08)" stroke="#e8a93d" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Customer Support</h3>
+        <p>Dedicated support team managing homebuyer queries, complaints, and escalations professionally.</p>
+      </div>
+
+      <div class="service-card reveal d4">
+        <span class="service-num">04</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="16" width="32" height="24" rx="3" fill="rgba(201,146,42,0.12)" stroke="#e8a93d" stroke-width="2"/>
+            <path d="M14 16 V10 Q14 6 24 6 Q34 6 34 10 V16" fill="none" stroke="#e8a93d" stroke-width="2"/>
+            <circle cx="24" cy="28" r="5" fill="#e8a93d" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3>Possession &amp; Handover</h3>
+        <p>Smooth possession ceremonies, snag inspections, and complete key handover management.</p>
+      </div>
+
+      <div class="service-card reveal d5">
+        <span class="service-num">05</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="14" width="36" height="28" rx="3" fill="rgba(201,146,42,0.12)" stroke="#e8a93d" stroke-width="2"/>
+            <line x1="6" y1="24" x2="42" y2="24" stroke="#e8a93d" stroke-width="1.5"/>
+            <path d="M20 33 L23 36 L29 29" stroke="#e8a93d" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Society Formation</h3>
+        <p>Legal registration, committee elections, and full society formation under MCS Act.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     WHY CHOOSE US
+     ============================== -->
+<section class="why-us" id="why">
+  <div class="container">
+    <div class="why-header">
+      <div class="reveal">
+        <span class="tag-label">Why Choose Us</span>
+        <h2 class="section-title">Built on Trust,<br/>Driven by Results</h2>
+      </div>
+      <p class="why-desc reveal d2">We combine deep domain expertise with a structured, technology-assisted approach to deliver measurable outcomes for builders and developers across Pune and Maharashtra.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 24 L20 18 L26 24 L34 14" stroke="#f5a623" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="34" cy="14" r="3" fill="#1a3a6b"/>
+          </svg>
+        </div>
+        <h4>10+ Years Experience</h4>
+        <p>Proven track record since 2014</p>
+      </div>
+
+      <div class="why-card reveal d2">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 24 L21 29 L32 18" stroke="#1a3a6b" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Structured Process</h4>
+        <p>Defined SLAs and milestone tracking</p>
+      </div>
+
+      <div class="why-card reveal d3">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 28 L24 24 L28 28" stroke="#2d8a4e" stroke-width="2.5" fill="none"/>
+            <line x1="24" y1="24" x2="24" y2="34" stroke="#2d8a4e" stroke-width="2.5"/>
+            <path d="M16 32 Q16 20 24 18 Q32 20 32 32" fill="#4caf50" opacity="0.2"/>
+          </svg>
+        </div>
+        <h4>Improved Cash Flow</h4>
+        <p>Faster disbursements &amp; collections</p>
+      </div>
+
+      <div class="why-card reveal d4">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 28 L22 24 L26 27 L32 20" stroke="#e07b00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Reduced Complaints</h4>
+        <p>Proactive resolution framework</p>
+      </div>
+
+      <div class="why-card reveal d5">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="14" y1="28" x2="14" y2="34" stroke="#1a3a6b" stroke-width="3"/>
+            <line x1="21" y1="22" x2="21" y2="34" stroke="#f5a623" stroke-width="3"/>
+            <line x1="28" y1="18" x2="28" y2="34" stroke="#1a3a6b" stroke-width="3"/>
+            <line x1="35" y1="14" x2="35" y2="34" stroke="#f5a623" stroke-width="3"/>
+          </svg>
+        </div>
+        <h4>Professional Reporting</h4>
+        <p>Real-time dashboards &amp; MIS reports</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     PROCESS SECTION
+     ============================== -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="tag-label" style="justify-content:center;">How We Work</span>
+      <h2 class="section-title">Our Process</h2>
+    </div>
+
+    <div class="process-track reveal d1">
+      <div class="process-step">
+        <div class="step-arrow">
+          <span class="step-num">1</span>
+          <span class="step-label">Project Onboarding</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-arrow">
+          <span class="step-num">2</span>
+          <span class="step-label">CRM Setup</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-arrow">
+          <span class="step-num">3</span>
+          <span class="step-label">Dedicated Team</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-arrow">
+          <span class="step-num">4</span>
+          <span class="step-label">Disbursement Tracking</span>
+        </div>
+      </div>
+      <div class="process-step last">
+        <div class="step-arrow last-arrow">
+          <span class="step-num">5</span>
+          <span class="step-label">Customer Follow-Up</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     BENEFITS + TESTIMONIALS
+     ============================== -->
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="benefits-inner">
+      <div class="benefits-left reveal">
+        <span class="tag-label">For Developers</span>
+        <h2 class="section-title">Benefits for Developers</h2>
+        <div class="benefits-list">
+          <ul>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Faster Agreement Execution</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Timely Bank Disbursement</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Reduced Customer Complaints</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Improved Brand Image</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Organized &amp; Profitable Operations</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="testimonials" class="reveal d2">
+        <span class="tag-label">Testimonials</span>
+        <div class="testimonial-box">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">Second Opinion transformed our post-sales process. Our cash flow improved and customer satisfaction increased!</p>
+          <div class="testimonial-author">– ABC Builders</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     CTA SECTION
+     ============================== -->
+<section class="cta-banner" id="contact">
+  <div class="cta-overlay"></div>
+  <div class="container cta-content reveal">
+    <div class="cta-line"></div>
+    <h2 class="cta-heading">Let's Build a Structured &amp; Profitable Post-Sales System</h2>
+    <p class="cta-sub">One Roof for Property Solution</p>
+    <div class="cta-buttons">
+      <a href="tel:+919876543210" class="btn btn-gold btn-lg">Book Free Consultation</a>
+      <a href="mailto:info@secondopinioncrm.com" class="btn btn-outline-white btn-lg">Talk to CRM Expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     FOOTER
+     ============================== -->
+<footer class="footer" id="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="#" class="footer-logo">
+          <img src="assest/images/logo.png" alt="Second Opinion Logo">
+        </a>
+        <p class="footer-about">Pune's leading Real Estate CRM company, managing post-sales journeys for builders and developers across Maharashtra since 2014.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Agreement Management</a></li>
+          <li><a href="#services">Disbursement Handling</a></li>
+          <li><a href="#services">Customer Support</a></li>
+          <li><a href="#services">Possession &amp; Handover</a></li>
+          <li><a href="#services">Society Formation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact Us</h4>
+        <ul class="footer-contact-list">
+          <li>
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>Pimpri-Chinchwad, Pune,<br>Maharashtra</span>
+          </li>
+          <li>
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </span>
+            <a href="tel:+919876543210">+91 9876 543210</a>
+          </li>
+          <li>
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <a href="mailto:info@secondopinioncrm.com">info@secondopinioncrm.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">&copy; 2026 Second Opinion. All Rights Reserved.</p>
+      <p class="footer-location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Pune | Pimpri-Chinchwad
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<script>
+'use strict';
+
+/* ---- Navbar ---- */
+(function() {
+  const navbar    = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 12);
+  }, { passive: true });
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!navbar.contains(e.target)) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+    }
+  });
+})();
+
+/* ---- Reveal on scroll ---- */
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
+  els.forEach(el => obs.observe(el));
+})();
+
+/* ---- Smooth scroll ---- */
+document.addEventListener('click', e => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const id = link.getAttribute('href').slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+  e.preventDefault();
+  const navH = document.getElementById('navbar')?.offsetHeight || 72;
+  window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH - 8, behavior: 'smooth' });
+});
+
+/* ---- Scroll to top ---- */
+(function() {
+  const btn = document.getElementById('scrollTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+/* ---- Counter animation ---- */
+(function() {
+  document.querySelectorAll('.badge-num, .about-experience-badge span').forEach(el => {
+    const match = el.textContent.match(/^(\d+)/);
+    if (!match) return;
+    const end = parseInt(match[1], 10);
+    const suffix = el.textContent.replace(/^\d+/, '');
+    let started = false;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        let v = 0;
+        const step = Math.ceil(end / 60);
+        const tick = () => {
+          v = Math.min(v + step, end);
+          el.textContent = v + suffix;
+          if (v < end) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.5 });
+    obs.observe(el);
+  });
+})();
+
+/* ---- Process step stagger ---- */
+(function() {
+  const steps = document.querySelectorAll('.process-step');
+  steps.forEach(s => { s.style.opacity='0'; s.style.transform='translateY(20px)'; s.style.transition='opacity 0.5s ease, transform 0.5s ease'; });
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      steps.forEach((s, i) => setTimeout(() => { s.style.opacity='1'; s.style.transform='none'; }, i * 110));
+      obs.disconnect();
+    }
+  }, { threshold: 0.2 });
+  if (steps.length) obs.observe(steps[0]);
+})();
+
+/* ---- Button ripple ---- */
+(function() {
+  if (!document.getElementById('ripple-style')) {
+    const s = document.createElement('style');
+    s.id = 'ripple-style';
+    s.textContent = '@keyframes rippleAnim{to{transform:scale(60);opacity:0;}}';
+    document.head.appendChild(s);
+  }
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = this.getBoundingClientRect();
+      const rpl = document.createElement('span');
+      rpl.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);width:6px;height:6px;left:${e.clientX-r.left}px;top:${e.clientY-r.top}px;transform:scale(0);animation:rippleAnim 0.55s ease-out;pointer-events:none;`;
+      this.style.position='relative'; this.style.overflow='hidden';
+      this.appendChild(rpl);
+      rpl.addEventListener('animationend', () => rpl.remove());
+    });
+  });
+})();
+
+/* ---- Hero trigger ---- */
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 120 + i * 200);
+  });
+});
+</script>
+</body>
+</html>

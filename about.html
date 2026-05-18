@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Second Opnion - Corporate Light</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --bg-gray: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --primary-navy: #1a3a6b;
+            --primary-blue: #2563eb;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* Main background color is white as requested */
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Hero Section with Background Image */
+        .hero {
+            position: relative;
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Corporate building background with a dark overlay to make text readable */
+            background: linear-gradient(rgba(26, 58, 107, 0.85), rgba(26, 58, 107, 0.9)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2070&q=80') center/cover fixed;
+            color: var(--bg-white);
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .typewriter-container {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #93c5fd;
+            margin-bottom: 2rem;
+            min-height: 2.5rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Mission & Vision - Overlapping Cards */
+        .overlap-section {
+            margin-top: -100px; /* Pulls cards up over the hero image */
+            position: relative;
+            z-index: 10;
+            padding: 0 0 5rem 0;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Top accent bar for cards */
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-blue);
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        .info-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-card h2 i {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            background: #eff6ff;
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+        }
+
+        /* Why Choose Us Section */
+        .features-section {
+            background-color: var(--bg-white);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .features-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-box:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-box h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .overlap-section {
+                margin-top: -50px;
+                padding: 0 1rem 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+    
+    <a href="#" class="nav-logo">
+        <div class="logo-icon">
+        <a href="index.html"><img src="assest/images/logo.png" alt="logo" style="height: 40px; width: auto; object-fit: contain;"></a>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="about.html">About Us</a>
+        <a href="">Services</a>
+        <a href="#process">Process</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#testimonials">Testimonials</a>
+      </nav>
+
+      <a href="contact.html" class="btn btn-primary nav-cta">Book Free Consultation</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+    <!-- Hero Section with Background Image -->
+    <header class="hero">
+        <h1>Second <span class="highlight-text">Opnion</span></h1>
+        <div class="typewriter-container">
+            <span id="typewriter"></span><span class="cursor">|</span>
+        </div>
+        <p>
+            At Second Opnion, we specialize in providing smart and reliable Real Estate CRM solutions for builders, developers, and customers. Our goal is to simplify property management, customer communication, lead tracking, and sales processes through innovative technology. We help real estate businesses improve efficiency, build stronger customer relationships, and make better business decisions with easy-to-use digital solutions.
+        </p>
+    </header>
+
+    <main class="container">
+        <!-- Mission & Vision (Overlapping Layout) -->
+        <section class="overlap-section">
+            <div class="split-grid">
+                <div class="info-card reveal">
+                    <h2><i class='bx bx-target-lock'></i> Mission</h2>
+                    <p>Our mission at Second Opnion is to empower builders, developers, and real estate professionals with innovative CRM solutions that simplify operations, improve customer relationships, and accelerate business growth through smart technology.</p>
+                </div>
+                <div class="info-card reveal">
+                    <h2><i class='bx bx-bulb'></i> Vision</h2>
+                    <p>Our vision is to become a trusted leader in the real estate technology industry by delivering modern, efficient, and customer-focused CRM solutions that shape the future of property management and sales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="features-section">
+            <div class="features-header reveal">
+                <h2>Why Choose Us</h2>
+                <p>Built for Builders. Designed for Growth.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box reveal">
+                    <div class="icon-wrapper"><i class='bx bx-chip'></i></div>
+                    <h3>Advanced CRM solutions designed specifically for the real estate industry</h3>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="icon-wrapper"><i class='bx bx-group'></i></div>
+                    <h3>Easy lead and customer management</h3>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="icon-wrapper"><i class='bx bx-trending-up'></i></div>
+                    <h3>Smart sales and follow-up tracking</h3>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="icon-wrapper"><i class='bx bx-lock-alt'></i></div>
+                    <h3>User-friendly and secure platform</h3>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="icon-wrapper"><i class='bx bx-buildings'></i></div>
+                    <h3>Customized solutions for builders and developers</h3>
+                </div>
+                <div class="feature-box reveal">
+                    <div class="icon-wrapper"><i class='bx bx-support'></i></div>
+                    <h3>Dedicated support and reliable service</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="footer">
+    <div class="footer-glow footer-glow-1"></div>
+    <div class="footer-glow footer-glow-2"></div>
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="#" class="footer-logo">
+            <img src="assest/images/logo.png" alt="Second Opinion Logo">
+          </a>
+          <p class="footer-about">Pune's leading Real Estate CRM company, managing post-sales journeys for builders and developers across Maharashtra since 2014.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Agreement Management</a></li>
+            <li><a href="#services">Disbursement Handling</a></li>
+            <li><a href="#services">Customer Support</a></li>
+            <li><a href="#services">Possession &amp; Handover</a></li>
+            <li><a href="#services">Society Formation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Contact Us</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Pimpri-Chinchwad, Pune,<br>Maharashtra</span>
+            </li>
+            <li>
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </span>
+              <a href="tel:+919876543210">+91 9876 543210</a>
+            </li>
+            <li>
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <a href="mailto:info@secondopinioncrm.com">info@secondopinioncrm.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="footer-copy">&copy; 2026 Second Opinion. All Rights Reserved.</p>
+        <p class="footer-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Pune | Pimpri-Chinchwad
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+
+    <script>
+        // --- 1. Typewriter Effect ---
+        const taglines = [
+            "Smart CRM Solutions for Real Estate Growth",
+            "Transforming Real Estate Management Digitally",
+            "Your Trusted Real Estate CRM Partner",
+            "Simplifying Real Estate Operations",
+            "Built for Builders. Designed for Growth."
+        ];
+        
+        const typeWriterElement = document.getElementById('typewriter');
+        let taglineIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentTagline = taglines[taglineIndex];
+            
+            if (isDeleting) {
+                typeWriterElement.textContent = currentTagline.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeWriterElement.textContent = currentTagline.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typingSpeed = isDeleting ? 30 : 80;
+            
+            if (!isDeleting && charIndex === currentTagline.length) {
+                typingSpeed = 2500; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                taglineIndex = (taglineIndex + 1) % taglines.length;
+                typingSpeed = 400; // Pause before next
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+        
+        // Cursor blink
+        setInterval(() => {
+            const cursor = document.querySelector('.cursor');
+            if(cursor) cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+        }, 500);
+
+        setTimeout(type, 1000);
+
+        // --- 2. Scroll Reveal Animations ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
