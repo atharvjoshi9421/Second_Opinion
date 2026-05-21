@@ -1,332 +1,281 @@
-/* =============================================
-   Second Opinion CRM – script.js
-   Vanilla JavaScript – No frameworks
-   ============================================= */
+// ============================================
+// SECOND OPINION – Multi-Page Website JS
+// ============================================
 
-'use strict';
+// ===== NAVBAR & FOOTER INJECTION =====
+const NAVBAR_HTML = `
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="assest/images/logo-removebg-preview.png" alt="Second Opinion Logo" class="nav-logo" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-icon"><i class="fas fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html" data-page="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html" data-page="about">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-page="services">Services</a>
+          <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+            <li><a class="dropdown-item" href="services.html">Builder Services</a></li>
+            <li><a class="dropdown-item" href="services.html">Customer Services</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="benefits.html" data-page="benefits">Benefits</a></li>
+        <li class="nav-item"><a class="nav-link btn-enquiry ms-lg-3" href="enquiry.html" data-page="enquiry">Enquiry</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>`;
 
-/* ============================================
-   UTILITY: Query selectors
-   ============================================ */
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+const FOOTER_HTML = `
+<footer class="main-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <img src="assest/images/logo-removebg-preview.png" alt="Second Opinion" class="footer-logo" />
+        <p class="mt-3">One Roof for Property Solutions. We bring trust, transparency, and expertise to every real estate journey.</p>
+        <div class="social-row mt-3">
+          <a href="https://wa.me/919876543210" target="_blank" class="soc-btn sm" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="soc-btn sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="soc-btn sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="soc-btn sm" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="footer-head">Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html?tab=builder">Builder Services</a></li>
+          <li><a href="services.html?tab=customer">Customer Services</a></li>
+          <li><a href="benefits.html">Benefits</a></li>
+          <li><a href="enquiry.html">Enquiry</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <h6 class="footer-head">Our Services</h6>
+        <ul class="footer-links">
+          <li><a href="services.html?tab=customer">Property Search</a></li>
+          <li><a href="services.html?tab=customer">Second Opinion</a></li>
+          <li><a href="services.html?tab=customer">Legal Due Diligence</a></li>
+          <li><a href="services.html?tab=customer">Home Loan Assistance</a></li>
+          <li><a href="services.html?tab=builder">Builder Marketing</a></li>
+          <li><a href="services.html?tab=customer">Post-Possession Support</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="footer-head">Contact Us</h6>
+        <ul class="footer-links contact-footer">
+          <li><i class="fas fa-map-marker-alt"></i><span>Office No. 302, Solitaire Business Hub, Viman Nagar, Pune – 411014</span></li>
+          <li><i class="fas fa-phone-alt"></i><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:info@secondopinion.in">info@secondopinion.in</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Second Opinion. All rights reserved. | Designed with <i class="fas fa-heart"></i> in India</p>
+    </div>
+  </div>
+</footer>
 
-/* ============================================
-   1. NAVBAR – Sticky scroll shadow + hamburger
-   ============================================ */
-(function initNavbar() {
-  const navbar    = $('#navbar');
-  const hamburger = $('#hamburger');
-  const navLinks  = $('#navLinks');
-  const navCta    = $('.nav-cta');
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/919876543210" target="_blank" class="float-btn whatsapp-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<button class="float-btn scroll-top-btn" id="scrollTopBtn" title="Back to top" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>`;
 
-  /* Scroll shadow */
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 12) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  }, { passive: true });
+// ===== INJECT NAVBAR & FOOTER =====
+function injectLayout() {
+  // Inject Navbar
+  const navPlaceholder = document.getElementById('navbar-placeholder');
+  if (navPlaceholder) navPlaceholder.innerHTML = NAVBAR_HTML;
 
-  /* Hamburger toggle */
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });
+  // Inject Footer
+  const footerPlaceholder = document.getElementById('footer-placeholder');
+  if (footerPlaceholder) footerPlaceholder.innerHTML = FOOTER_HTML;
 
-  /* Close menu when a link is clicked */
-  $$('a', navLinks).forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', false);
-    });
-  });
+  // Set active nav link based on current page
+  setActiveNavLink();
 
-  /* Close menu on outside click */
-  document.addEventListener('click', (e) => {
-    if (!navbar.contains(e.target)) {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-    }
-  });
+  // Bind scroll-to-top after injection
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', scrollToTop);
+  }
+}
 
-  /* Active link highlight on scroll */
-  const sections = $$('section[id]');
-  const navAnchors = $$('.nav-links a');
-
-  const activateLink = () => {
-    let current = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-    });
-    navAnchors.forEach(a => {
-      a.style.color = '';
-      if (a.getAttribute('href') === `#${current}`) {
-        a.style.color = 'var(--navy)';
-        a.style.fontWeight = '600';
-      } else {
-        a.style.fontWeight = '';
-      }
-    });
+// ===== ACTIVE NAV LINK =====
+function setActiveNavLink() {
+  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  const pageMap = {
+    'index.html': 'home',
+    '': 'home',
+    'about.html': 'about',
+    'services.html': 'services',
+    'benefits.html': 'benefits',
+    'enquiry.html': 'enquiry'
   };
+  const currentPage = pageMap[currentFile] || 'home';
 
-  window.addEventListener('scroll', activateLink, { passive: true });
-})();
+  document.querySelectorAll('.navbar-nav .nav-link[data-page]').forEach(link => {
+    link.classList.remove('active-link');
+    if (link.getAttribute('data-page') === currentPage) {
+      link.classList.add('active-link');
+    }
+  });
+}
 
-/* ============================================
-   2. FADE-IN ON SCROLL – IntersectionObserver
-   ============================================ */
-(function initFadeIn() {
-  const elements = $$('.fade-in');
+// ===== SCROLL TO TOP =====
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-  if (!elements.length) return;
+// ===== SCROLL EVENTS =====
+function initScrollEvents() {
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('mainNav');
+    const scrollBtn = document.getElementById('scrollTopBtn');
 
-  const observer = new IntersectionObserver((entries) => {
+    if (nav) {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    if (scrollBtn) {
+      scrollBtn.classList.toggle('show', window.scrollY > 400);
+    }
+
+    revealOnScroll();
+  });
+}
+
+// ===== SCROLL REVEAL =====
+function revealOnScroll() {
+  document.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+      el.classList.add('revealed');
+    }
+  });
+}
+
+function initReveal() {
+  document.querySelectorAll('.service-card, .testi-card, .benefit-card, .value-card, .svc-feat-card, .team-card, .how-step').forEach(el => {
+    el.classList.add('reveal');
+  });
+  revealOnScroll();
+}
+
+// ===== COUNTER ANIMATION =====
+function animateCounters() {
+  document.querySelectorAll('.stat-card h3').forEach(counter => {
+    const text = counter.innerText;
+    const hasPlus = text.includes('+');
+    const hasPct = text.includes('%');
+    const num = parseInt(text.replace(/\D/g, ''), 10);
+    let start = 0;
+    const duration = 1800;
+    const step = num / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= num) {
+        start = num;
+        clearInterval(timer);
+      }
+      counter.innerText = Math.floor(start) + (hasPlus ? '+' : '') + (hasPct ? '%' : '');
+    }, 16);
+  });
+}
+
+function initCounterObserver() {
+  const statsSection = document.querySelector('.stats-section');
+  if (!statsSection) return;
+
+  let animated = false;
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        animateCounters();
+        obs.disconnect();
       }
     });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.5 });
 
-  elements.forEach(el => observer.observe(el));
-})();
+  obs.observe(statsSection);
+}
 
-/* ============================================
-   3. SMOOTH SCROLLING for anchor links
-   ============================================ */
-(function initSmoothScroll() {
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
+// ===== SERVICE TAB SWITCH =====
+function switchService(tab, clickedBtn) {
+  const builderPanel = document.getElementById('svc-builder');
+  const customerPanel = document.getElementById('svc-customer');
+  if (!builderPanel || !customerPanel) return;
 
-    const targetId = link.getAttribute('href').slice(1);
-    const target   = document.getElementById(targetId);
-    if (!target) return;
+  if (tab === 'builder') {
+    builderPanel.style.display = 'block';
+    customerPanel.style.display = 'none';
+  } else {
+    builderPanel.style.display = 'none';
+    customerPanel.style.display = 'block';
+  }
 
+  document.querySelectorAll('.stab').forEach(btn => btn.classList.remove('active'));
+
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+  } else {
+    document.querySelectorAll('.stab').forEach(btn => {
+      const text = btn.textContent.trim();
+      if ((tab === 'builder' && text.includes('Builder')) ||
+          (tab === 'customer' && text.includes('Customer'))) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  // Update URL param without reload
+  const url = new URL(window.location);
+  url.searchParams.set('tab', tab);
+  window.history.replaceState({}, '', url);
+}
+
+function initServiceTabs() {
+  const params = new URLSearchParams(window.location.search);
+  const tab = params.get('tab') || 'builder';
+  switchService(tab, null);
+}
+
+// ===== ENQUIRY FORM =====
+function initEnquiryForm() {
+  const form = document.getElementById('enquiryForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting...';
+    submitBtn.disabled = true;
 
-    const navHeight = $('#navbar')?.offsetHeight || 72;
-    const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
-
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
-})();
-
-/* ============================================
-   4. SCROLL TO TOP BUTTON
-   ============================================ */
-(function initScrollTop() {
-  const btn = $('#scrollTop');
-  if (!btn) return;
-
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-
-/* ============================================
-   5. SERVICE CARD – stagger entrance
-   ============================================ */
-(function initCardStagger() {
-  const cards = $$('.service-card, .why-card');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        // Extra stagger based on DOM order
-        const idx = cards.indexOf(entry.target);
-        entry.target.style.transitionDelay = `${idx * 0.07}s`;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+    setTimeout(() => {
+      form.style.display = 'none';
+      const success = document.getElementById('formSuccess');
+      if (success) {
+        success.style.display = 'block';
+        success.style.animation = 'fadeInUp 0.6s ease forwards';
       }
-    });
-  }, { threshold: 0.10 });
-
-  cards.forEach(c => {
-    c.classList.add('fade-in'); // ensure fade class
-    observer.observe(c);
+    }, 1500);
   });
-})();
+}
 
-/* ============================================
-   6. PROCESS STEPS – Animate on scroll
-   ============================================ */
-(function initProcessAnim() {
-  const steps = $$('.process-step');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const allSteps = $$('.process-step');
-        allSteps.forEach((step, i) => {
-          setTimeout(() => {
-            step.style.opacity = '1';
-            step.style.transform = 'translateY(0)';
-          }, i * 120);
-        });
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.2 });
-
-  steps.forEach(step => {
-    step.style.opacity = '0';
-    step.style.transform = 'translateY(20px)';
-    step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  });
-
-  if (steps.length) observer.observe(steps[0]);
-})();
-
-/* ============================================
-   7. COUNTER ANIMATION – for stat badges
-   ============================================ */
-(function initCounters() {
-  const targets = $$('.badge-num, .about-experience-badge span');
-
-  targets.forEach(el => {
-    const match = el.textContent.match(/^(\d+)/);
-    if (!match) return;
-
-    const end    = parseInt(match[1], 10);
-    const suffix = el.textContent.replace(/^\d+/, '');
-    let   start  = 0;
-    const dur    = 1800;
-    const step   = Math.ceil(end / (dur / 16));
-
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        obs.unobserve(entry.target);
-
-        const tick = () => {
-          start = Math.min(start + step, end);
-          el.textContent = start + suffix;
-          if (start < end) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.5 });
-
-    obs.observe(el);
-  });
-})();
-
-/* ============================================
-   8. HERO PARALLAX (subtle depth effect)
-   ============================================ */
-(function initHeroParallax() {
-  const hero    = $('#hero');
-  const content = $('.hero-content');
-
-  if (!hero || !content) return;
-
-  // Only on non-mobile
-  if (window.innerWidth <= 768) return;
-
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const rate     = scrolled * 0.22;
-    content.style.transform = `translateY(${rate}px)`;
-    content.style.opacity   = Math.max(0, 1 - scrolled / 500);
-  }, { passive: true });
-})();
-
-/* ============================================
-   9. BUTTON RIPPLE EFFECT
-   ============================================ */
-(function initRipple() {
-  $$('.btn').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      const rect   = this.getBoundingClientRect();
-      const x      = e.clientX - rect.left;
-      const y      = e.clientY - rect.top;
-      const ripple = document.createElement('span');
-
-      ripple.style.cssText = `
-        position:absolute;
-        border-radius:50%;
-        background:rgba(255,255,255,0.35);
-        width:6px;height:6px;
-        left:${x}px;top:${y}px;
-        transform:scale(0);
-        animation:rippleAnim 0.55s ease-out;
-        pointer-events:none;
-      `;
-
-      // Inject ripple keyframes once
-      if (!document.getElementById('ripple-style')) {
-        const s = document.createElement('style');
-        s.id = 'ripple-style';
-        s.textContent = `@keyframes rippleAnim{to{transform:scale(60);opacity:0;}}`;
-        document.head.appendChild(s);
-      }
-
-      this.style.position = 'relative';
-      this.style.overflow = 'hidden';
-      this.appendChild(ripple);
-      ripple.addEventListener('animationend', () => ripple.remove());
-    });
-  });
-})();
-
-/* ============================================
-   10. TESTIMONIAL TYPING EFFECT (subtle)
-   ============================================ */
-(function initTestimonial() {
-  const box = $('.testimonial-box');
-  if (!box) return;
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        box.style.animation = 'none';
-        box.style.transform = 'translateY(0)';
-        box.style.opacity   = '1';
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  box.style.opacity   = '0';
-  box.style.transform = 'translateY(24px)';
-  box.style.transition= 'opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s';
-
-  observer.observe(box);
-})();
-
-/* ============================================
-   11. FOOTER links hover glow
-   ============================================ */
-(function initFooterEffects() {
-  $$('.social-link').forEach(link => {
-    link.addEventListener('mouseenter', function() {
-      this.style.boxShadow = '0 0 14px rgba(245,166,35,0.4)';
-    });
-    link.addEventListener('mouseleave', function() {
-      this.style.boxShadow = '';
-    });
-  });
-})();
-
-/* ============================================
-   12. PAGE LOAD – Entry animation trigger
-   ============================================ */
-window.addEventListener('DOMContentLoaded', () => {
-  // Trigger hero animations immediately
-  $$('#hero .fade-in').forEach((el, i) => {
-    setTimeout(() => el.classList.add('visible'), 100 + i * 180);
-  });
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  injectLayout();
+  initScrollEvents();
+  initReveal();
+  initCounterObserver();
+  initServiceTabs();
+  initEnquiryForm();
 });
