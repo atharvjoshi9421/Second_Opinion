@@ -32,53 +32,247 @@ const NAVBAR_HTML = `
 
 const FOOTER_HTML = `
 <footer class="main-footer">
+
   <div class="container">
+
     <div class="row g-5">
+
+      <!-- LEFT -->
       <div class="col-lg-4">
-        <img src="assest/images/logo-removebg-preview.png" alt="Second Opinion" class="footer-logo" />
-        <p class="mt-3">One Roof for Property Solutions. We bring trust, transparency, and expertise to every real estate journey.</p>
+
+        <img
+          src="assest/images/logo-removebg-preview.png"
+          alt="Second Opinion"
+          class="footer-logo"
+        />
+
+        <p class="mt-3">
+          One Roof for Property Solutions.
+          We bring trust, transparency,
+          and expertise to every real estate journey.
+        </p>
+
         <div class="social-row mt-3">
-          <a href="https://wa.me/919876543210" target="_blank" class="soc-btn sm" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="soc-btn sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="soc-btn sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="soc-btn sm" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+          <a
+            href="https://wa.me/919421344075"
+            target="_blank"
+            class="soc-btn sm"
+            aria-label="WhatsApp"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+
+          <a
+            href="#"
+            class="soc-btn sm"
+            aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a
+            href="#"
+            class="soc-btn sm"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a
+            href="#"
+            class="soc-btn sm"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
         </div>
+
       </div>
+
+      <!-- QUICK LINKS -->
       <div class="col-sm-6 col-lg-2">
+
         <h6 class="footer-head">Quick Links</h6>
+
         <ul class="footer-links">
+
           <li><a href="index.html">Home</a></li>
+
           <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html?tab=builder">Builder Services</a></li>
-          <li><a href="services.html?tab=customer">Customer Services</a></li>
+
+          <li>
+            <a href="services.html?tab=builder">
+              Builder Services
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html?tab=customer">
+              Customer Services
+            </a>
+          </li>
+
           <li><a href="benefits.html">Benefits</a></li>
+
           <li><a href="enquiry.html">Enquiry</a></li>
+
         </ul>
+
       </div>
+
+      <!-- SERVICES -->
       <div class="col-sm-6 col-lg-3">
+
         <h6 class="footer-head">Our Services</h6>
+
         <ul class="footer-links">
-          <li><a href="services.html?tab=customer">Property Search</a></li>
-          <li><a href="services.html?tab=customer">Second Opinion</a></li>
-          <li><a href="services.html?tab=customer">Legal Due Diligence</a></li>
-          <li><a href="services.html?tab=customer">Home Loan Assistance</a></li>
-          <li><a href="services.html?tab=builder">Builder Marketing</a></li>
-          <li><a href="services.html?tab=customer">Post-Possession Support</a></li>
+
+          <li>
+            <a href="services.html?tab=customer">
+              Property Search
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html?tab=customer">
+              Second Opinion
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html?tab=customer">
+              Legal Due Diligence
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html?tab=customer">
+              Home Loan Assistance
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html?tab=builder">
+              Builder Marketing
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html?tab=customer">
+              Post-Possession Support
+            </a>
+          </li>
+
         </ul>
+
       </div>
+
+      <!-- CONTACT -->
       <div class="col-lg-3">
+
         <h6 class="footer-head">Contact Us</h6>
+
         <ul class="footer-links contact-footer">
-          <li><i class="fas fa-map-marker-alt"></i><span>Office No. 302, Solitaire Business Hub, Viman Nagar, Pune – 411014</span></li>
-          <li><i class="fas fa-phone-alt"></i><a href="tel:+919876543210">+91 98765 43210</a></li>
-          <li><i class="fas fa-envelope"></i><a href="mailto:info@secondopinion.in">info@secondopinion.in</a></li>
+
+          <li>
+
+            <i class="fas fa-map-marker-alt"></i>
+
+            <span>
+              Office No. 302,
+              Solitaire Business Hub,
+              Viman Nagar,
+              Pune – 411014
+            </span>
+
+          </li>
+
+          <li>
+
+            <i class="fas fa-phone-alt"></i>
+
+            <a href="tel:+919421344075">
+              +91 94213 44075
+            </a>
+
+          </li>
+
+          <li>
+
+            <i class="fas fa-envelope"></i>
+
+            <a href="mailto:info@secondopinion.in">
+              info@secondopinion.in
+            </a>
+
+          </li>
+
         </ul>
+
+        <!-- QR CODE -->
+
+        <div class="qr-box">
+
+          <div class="qr-left">
+
+            <h6 class="footer-head">
+              WhatsApp QR
+            </h6>
+
+            <p class="qr-text">
+              Scan to chat on WhatsApp
+            </p>
+
+          </div>
+
+          <div class="qr-right">
+
+            <a
+              href="https://wa.me/919421344075"
+              target="_blank"
+            >
+
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/919421344075"
+                alt="WhatsApp QR Code"
+                class="footer-qr"
+              />
+
+            </a>
+
+          </div>
+
+        </div>
+
       </div>
+
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Second Opinion. All rights reserved. | Designed with <i class="fas fa-heart"></i> in India</p>
-    </div>
+
+    <!-- FOOTER BOTTOM -->
+
+  <div class="footer-bottom">
+
+  <p>
+    &copy; 2026 Second Opinion.
+    All rights reserved. |
+
+    Developed By
+    <a
+      href="https://mindaxiss.com/"
+      target="_blank"
+      class="developer-link"
+    >
+      MindAxis Innovation PVT LTD.
+    </a>
+
+  </p>
+
+</div>
+
   </div>
+
 </footer>
 
 <!-- FLOATING BUTTONS -->
@@ -248,26 +442,101 @@ function initServiceTabs() {
   switchService(tab, null);
 }
 
+// // ===== ENQUIRY FORM =====
+// function initEnquiryForm() {
+//   const form = document.getElementById('enquiryForm');
+//   if (!form) return;
+
+//   form.addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     const submitBtn = form.querySelector('button[type="submit"]');
+//     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting...';
+//     submitBtn.disabled = true;
+
+//     setTimeout(() => {
+//       form.style.display = 'none';
+//       const success = document.getElementById('formSuccess');
+//       if (success) {
+//         success.style.display = 'block';
+//         success.style.animation = 'fadeInUp 0.6s ease forwards';
+//       }
+//     }, 1500);
+//   });
+// }
+
 // ===== ENQUIRY FORM =====
 function initEnquiryForm() {
+
   const form = document.getElementById('enquiryForm');
+
   if (!form) return;
 
   form.addEventListener('submit', function (e) {
+
     e.preventDefault();
+
     const submitBtn = form.querySelector('button[type="submit"]');
+
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting...';
+
     submitBtn.disabled = true;
 
+    // ===== GET FORM VALUES =====
+    const fullName = document.getElementById('fullName').value;
+    const mobile = document.getElementById('mobile').value;
+    const email = document.getElementById('email').value;
+    const city = document.getElementById('city').value;
+    const budget = document.getElementById('budget').value;
+    const propType = document.getElementById('propType').value;
+    const service = document.getElementById('service').value;
+    const contactTime = document.getElementById('contactTime').value;
+    const message = document.getElementById('message').value;
+
+    // ===== WHATSAPP MESSAGE =====
+    const whatsappMessage = `
+*New Property Enquiry*
+
+👤 Full Name: ${fullName}
+📞 Mobile: ${mobile}
+📧 Email: ${email}
+🏙️ City: ${city}
+
+💰 Budget: ${budget}
+🏠 Property Type: ${propType}
+🛠️ Service Required: ${service}
+⏰ Preferred Contact Time: ${contactTime}
+
+📝 Message:
+${message}
+    `;
+
+    // ===== YOUR WHATSAPP NUMBER =====
+    const whatsappNumber = "919421344075";
+
+    // ===== WHATSAPP URL =====
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
     setTimeout(() => {
+
+      // OPEN WHATSAPP
+      window.open(whatsappURL, '_blank');
+
       form.style.display = 'none';
+
       const success = document.getElementById('formSuccess');
+
       if (success) {
+
         success.style.display = 'block';
+
         success.style.animation = 'fadeInUp 0.6s ease forwards';
+
       }
+
     }, 1500);
+
   });
+
 }
 
 // ===== INIT =====
@@ -279,3 +548,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initServiceTabs();
   initEnquiryForm();
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById("heroVideo");
+      const initialImg = document.getElementById("heroInitialImg");
+
+      // When the video actually begins playing, fade out the image
+      if (video && initialImg) {
+        video.addEventListener("playing", function() {
+          initialImg.style.opacity = "0";
+          
+          // Remove the image completely after the fade-out finishes
+          setTimeout(() => {
+            initialImg.style.display = "none";
+          }, 800); // Matches the CSS transition time
+        });
+      }
+    });
