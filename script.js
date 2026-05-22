@@ -234,11 +234,11 @@ const FOOTER_HTML = `
               target="_blank"
             >
 
-              <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/919421344075"
-                alt="WhatsApp QR Code"
-                class="footer-qr"
-              />
+             <img
+             src="https://quickchart.io/qr?text=https://wa.me/919421344075&size=180"
+             alt="WhatsApp QR Code"
+             class="footer-qr"
+             />
 
             </a>
 
