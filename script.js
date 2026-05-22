@@ -1,5 +1,5 @@
 // ============================================
-// SECOND OPINION – Multi-Page Website JS
+// SECOND opnion – Multi-Page Website JS
 // ============================================
 
 // ===== NAVBAR & FOOTER INJECTION =====
@@ -7,7 +7,7 @@ const NAVBAR_HTML = `
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand" href="index.html">
-      <img src="assest/images/logo-removebg-preview.png" alt="Second Opinion Logo" class="nav-logo" />
+      <img src="assest/images/logo-removebg-preview.png" alt="Second opnion Logo" class="nav-logo" />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="toggler-icon"><i class="fas fa-bars"></i></span>
@@ -42,7 +42,7 @@ const FOOTER_HTML = `
 
         <img
           src="assest/images/logo-removebg-preview.png"
-          alt="Second Opinion"
+          alt="Second opnion"
           class="footer-logo"
         />
 
@@ -137,7 +137,7 @@ const FOOTER_HTML = `
 
           <li>
             <a href="services.html?tab=customer">
-              Second Opinion
+              Second opnion
             </a>
           </li>
 
@@ -203,8 +203,8 @@ const FOOTER_HTML = `
 
             <i class="fas fa-envelope"></i>
 
-            <a href="mailto:info@secondopinion.in">
-              info@secondopinion.in
+            <a href="mailto:info@secondopnion.in">
+              info@secondopnion.in
             </a>
 
           </li>
@@ -255,7 +255,7 @@ const FOOTER_HTML = `
   <div class="footer-bottom">
 
   <p>
-    &copy; 2026 Second Opinion.
+    &copy; 2026 Second opnion.
     All rights reserved. |
 
     Developed By
